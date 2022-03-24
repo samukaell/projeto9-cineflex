@@ -1,0 +1,26 @@
+.Main{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.filme-selecionado{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filme-selecionado p{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+}
+.container-filmes{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
