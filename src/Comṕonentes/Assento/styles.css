@@ -22,3 +22,6 @@
 .assento-selecionado{
     background-color: #8DD7CF;
 }
+.assento-indisponivel{
+    background-color: #FBE192;
+}

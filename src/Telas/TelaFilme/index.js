@@ -27,7 +27,7 @@ export default function TelaFilme(){
         
 	}, []);
 
-    const {title,id,posterURL} = items;
+    const {title,posterURL} = items;
     //
     return(
         <div className="TelaFilme">

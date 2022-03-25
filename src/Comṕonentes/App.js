@@ -16,7 +16,7 @@ export default function App(){
                 <Routes>
                     <Route path="/" element={<TelaInicio />}/>
                     <Route path="/filme/:idFilme" element={<TelaFilme/>}/>
-                    <Route path="/sessao" element={<TelaSessao/>}/>
+                    <Route path="/sessao/:idSessao" element={<TelaSessao/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

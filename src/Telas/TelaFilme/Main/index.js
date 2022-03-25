@@ -17,7 +17,9 @@ export default function Main(props){
                         data = {time.date}
                         key = {time.id}
                         primeiroHorario = {time.showtimes[0].name}
+                        id1 = {time.showtimes[0].id}
                         segundoHorario = {time.showtimes[1].name}
+                        id2 = {time.showtimes[1].id}
                     />
                 )
             })}
@@ -25,18 +27,3 @@ export default function Main(props){
         </div>
     )
 }
-
-/* 
-    {dias.map(time=>{
-        return(
-            <Horairo
-                dia = {time.weekday}
-                data = {time.date}
-                key = {time.id}
-                primeiroHorario = {time.showtimes[0].name}
-                segundoHorario = {time.showtimes[1].name}
-            />
-        )
-    })}
-
-*/
