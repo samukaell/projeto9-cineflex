@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import Assento from'../../../Comṕonentes/Assento'
 
 import './styles.css'
 
 export default function Main(props){
     const {assentos} = props;
+
+    const [assentoSelecionado,setAssentoSelecionado] = useState([]);
+    const [nomeComprador,setNomeComprador] = useState("");
+    const [cpfComprador,setCpfComprador] = useState("");
 
     function rederizarAssentos(){
         const TodosAssentos = [];
@@ -14,6 +19,9 @@ export default function Main(props){
                         numero = {`0${assento.name}`} 
                         key={assento.id}
                         indisponivel = {assento.isAvailable}
+                        id = {assento.id}
+                        assentosSelecionados = {assentoSelecionado}
+                        callback ={setAssentoSelecionado}
                     />
                 )
             }else{
@@ -22,6 +30,9 @@ export default function Main(props){
                         numero = {`${assento.name}`} 
                         key={assento.id}
                         indisponivel = {assento.isAvailable}
+                        id = {assento.id}
+                        assentosSelecionados = {assentoSelecionado}
+                        callback ={setAssentoSelecionado}
                     />
                 )
             }
@@ -29,6 +40,12 @@ export default function Main(props){
             
         })
         return TodosAssentos;
+    }
+    function handleSubmit(e){
+        e.preventDefault();
+        if(nomeComprador !== "" && cpfComprador !== ""){
+            alert("Seu nome:"+nomeComprador+" e seu cpf:"+cpfComprador);
+        }
     }
 
     return(
@@ -55,12 +72,12 @@ export default function Main(props){
                     </div>
                 </div>
             </div>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <div className='caixa-form'>
                     <p className='texto-input'>Nome do comprador:</p>     
-                    <input type="text" name="nomeComprador" placeholder='Digite seu nome...'/>
+                    <input type="text" name="nomeComprador" value={nomeComprador} onChange={e => setNomeComprador(e.target.value)} placeholder='Digite seu nome...' required/>
                     <p className='texto-input'>CPF do comprador:</p>     
-                    <input type="text" name="nomdeComprador" placeholder='Digite seu CPF...'/>
+                    <input type="text" name="nomdeComprador" value={cpfComprador} onChange={e => setCpfComprador(e.target.value)} placeholder='Digite seu CPF...' required/>
                 </div>
                 <button className='botao-form' type='subimit'>Reservar assento(s)</button>
             </form>
