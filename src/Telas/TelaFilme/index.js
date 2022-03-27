@@ -7,7 +7,9 @@ import Footer from "../../Comṕonentes/Footer";
 
 import './styles.css'
 
-export default function TelaFilme(){
+export default function TelaFilme(props){
+
+    const {callback} = props;
 
     const [items, setItems] = useState({});
     const [diasHorario, setDiasHorario] = useState([]);
@@ -19,6 +21,7 @@ export default function TelaFilme(){
 
 		requisicao.then(resposta => {
             const {data} = resposta;
+            callback(data.title);
             console.log("O data ->",data);
 			setItems(data);
             setDiasHorario(data.days);

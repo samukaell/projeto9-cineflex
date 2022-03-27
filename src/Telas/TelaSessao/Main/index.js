@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 import Assento from'../../../Comṕonentes/Assento'
 
 import './styles.css'
 
 export default function Main(props){
-    const {assentos} = props;
+    const {assentos,callbackNome,callbackCpf,assentoSelecionado,setAssentoSelecionado} = props;
 
-    const [assentoSelecionado,setAssentoSelecionado] = useState([]);
+    const navigate = useNavigate();
+
+    const [resposta,setResposta] = useState(false);
+
     const [nomeComprador,setNomeComprador] = useState("");
     const [cpfComprador,setCpfComprador] = useState("");
 
@@ -41,10 +47,36 @@ export default function Main(props){
         })
         return TodosAssentos;
     }
+
+    function postAxios(){
+        
+        let enviar = {
+            ids: assentoSelecionado,
+            name: nomeComprador,
+            cpf: cpfComprador
+        }
+        
+        const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",enviar);
+
+        requisicao.then(resposta => {
+            setResposta(true);
+            console.log("A resposta do POST->",resposta)
+        })
+        requisicao.catch(err=> console.log(err.resposta));
+        
+
+        return resposta;
+    }
+
     function handleSubmit(e){
         e.preventDefault();
-        if(nomeComprador !== "" && cpfComprador !== ""){
-            alert("Seu nome:"+nomeComprador+" e seu cpf:"+cpfComprador);
+        if(nomeComprador !== "" && cpfComprador !== "" && assentoSelecionado.length>0){
+            callbackNome(nomeComprador);
+            callbackCpf(cpfComprador); 
+            
+            postAxios();
+            navigate('/sucesso');
+            
         }
     }
 
@@ -79,7 +111,9 @@ export default function Main(props){
                     <p className='texto-input'>CPF do comprador:</p>     
                     <input type="text" name="nomdeComprador" value={cpfComprador} onChange={e => setCpfComprador(e.target.value)} placeholder='Digite seu CPF...' required/>
                 </div>
+        
                 <button className='botao-form' type='subimit'>Reservar assento(s)</button>
+                     
             </form>
         </div>
     );

@@ -7,7 +7,9 @@ import Footer from '../../Comṕonentes/Footer';
 
 
 
-export default function TelaSessao(){
+export default function TelaSessao(props){
+
+    const {callbackNome,callbackCpf,assentoSelecionado,setAssentoSelecionado} = props;
 
     //Estado para o Main
     const [assento,setAssento] = useState([]);
@@ -39,6 +41,11 @@ export default function TelaSessao(){
         <>
             <Main
                 assentos = {assento}
+                callbackNome = {callbackNome}
+                callbackCpf = {callbackCpf}
+
+                assentoSelecionado = {assentoSelecionado}
+                setAssentoSelecionado = {setAssentoSelecionado}
             />
             <Footer 
                 filme = {url}
