@@ -30,7 +30,7 @@ export default function Assento(props){
 
     if(indisponivel){
         return(
-            <p className='bolinha assento-indisponivel'>{numero}</p>
+            <p className='bolinha assento-indisponivel' onClick={()=>{alert("Esse assento não está disponíve")}}>{numero}</p>
         )
     }else if(selecionado){
         return (

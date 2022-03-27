@@ -55,7 +55,6 @@ export default function Main(props){
             name: nomeComprador,
             cpf: cpfComprador
         }
-        
         const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",enviar);
 
         requisicao.then(resposta => {
