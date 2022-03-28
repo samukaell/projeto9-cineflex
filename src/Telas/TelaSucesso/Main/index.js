@@ -15,6 +15,7 @@ export default function Main(props){
             return listaAssentos;
         });
 
+        
         return listaAssentos;
     }
 

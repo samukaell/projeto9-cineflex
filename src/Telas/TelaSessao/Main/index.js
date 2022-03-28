@@ -58,13 +58,10 @@ export default function Main(props){
         const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",enviar);
 
         requisicao.then(resposta => {
-            setResposta(true);
             console.log("A resposta do POST->",resposta)
         })
         requisicao.catch(err=> console.log(err.resposta));
-        
 
-        return resposta;
     }
 
     function handleSubmit(e){

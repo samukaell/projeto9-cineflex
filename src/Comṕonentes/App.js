@@ -43,6 +43,7 @@ export default function App(){
                             nomeComprador = {nomeComprador}
                             cpfComprador = {cpfComprador}
                             assentos = {listaAssentos}
+                            setListaAssentos = {setListaAssentos}
                         />}/>
                 </Routes>
             </BrowserRouter>

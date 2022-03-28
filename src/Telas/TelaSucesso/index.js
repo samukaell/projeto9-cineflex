@@ -2,7 +2,7 @@ import Main from "./Main";
 
 export default function TelaSucesso(props){
 
-    const {nomeFilme,data,hora,nomeComprador,cpfComprador,assentos} = props
+    const {nomeFilme,data,hora,nomeComprador,cpfComprador,assentos,setListaAssentos} = props
 
     return (
         <div className="TelaSucesso">
@@ -13,6 +13,7 @@ export default function TelaSucesso(props){
                 nomeComprador = {nomeComprador}
                 cpfComprador = {cpfComprador}
                 assentos = {assentos}
+                setListaAssentos = {setListaAssentos}
             />
         </div>
     );
